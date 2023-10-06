@@ -1,11 +1,11 @@
-version: '3.9'
+version: '3.8'
 
 services:
   web:
     build: .
-    command: python /book/manage.py runserver 0.0.0.0:8000
+    command: python /code/manage.py runserver 0.0.0.0:8000
     volumes:
-      - .:/book
+      - .:/code
     ports:
       - "8000:8000"
     depends_on:
@@ -15,7 +15,7 @@ services:
     volumes:
       - postgres_data:/var/lib/postgresql/data/
     environment:
-        - "POSTGRES_HOST_AUTH_METHOD=trust"
+      - "POSTGRES_HOST_AUTH_METHOD=trust"
 
 volumes:
   postgres_data:
