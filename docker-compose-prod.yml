@@ -3,7 +3,8 @@ version: '3.8'
 services:
   web:
     build: .
-    command: python /book/manage.py runserver 0.0.0.0:8000
+#    command: python /book/manage.py runserver 0.0.0.0:8000
+    command: gunicorn config.wsgi -b 0.0.0.0:8000
     volumes:
       - .:/book
     ports:
@@ -13,7 +14,6 @@ services:
     environment:
       - 'DJANGO_SECRET_KEY=I5ixvmCTs5kfOUpx1Hy35qCDPxwq11jXB7X02DcIhUTDLi151AM'
       - 'DJANGO_SECURE_SSL_REDIRECT=False'
-      -
   db:
     image: postgres:11
     volumes:
